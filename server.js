@@ -1,4 +1,6 @@
 import express from "express";
+import { PORT } from "./env.js";
+// // // Importing the PORT from the env.js file that's comes through the Validation Process;
 
 const server = express();
 
@@ -27,8 +29,8 @@ server.get("/contact", (request, response) => {
     </div>`);
 });
 
-// // // Use of Environment Variable;
-const PORT = process.env.PORT || 3001; // // Default PORT is 3001 if something went wrong;
+// // // // Use of Environment Variable;
+// const PORT = process.env.PORT || 3001; // // Default PORT is 3001 if something went wrong;
 
 server.listen(PORT, () => {
     console.log(`Server Running at ${PORT}`);
