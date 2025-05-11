@@ -1,0 +1,19 @@
+{
+  "name": "030--validate_envvar_expressjs_using_zod",
+  "version": "1.0.0",
+  "main": "theoryZod.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoolShivas/030--Validate_EnvVar_ExpressJS_Using_Zod.git"
+  },
+  "author": "Shiva Chouhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoolShivas/030--Validate_EnvVar_ExpressJS_Using_Zod/issues"
+  },
+  "homepage": "https://github.com/CoolShivas/030--Validate_EnvVar_ExpressJS_Using_Zod#readme",
+  "description": ""
+}
