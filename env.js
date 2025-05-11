@@ -9,7 +9,7 @@ export const PORT = isNaN(process.env.PORT) ? 3001 : parseInt(process.env.PORT);
 // // // ---------------------------------------------------------------------------------------------
 
 
-import { z } from "zod";
+import { z, ZodError } from "zod";
 
 
 
@@ -33,11 +33,11 @@ import { z } from "zod";
 
 
 
-const userAge = 17; // // Providing the user age here;
-const ageSchema = z.number().min(18).max(100).int(); 
-const parseAgeSchema = ageSchema.parse(userAge);
-console.log(parseAgeSchema);
-// // // // Here, we are getting the Ouput on Terminal as :- error;
+// const userAge = 17; // // Providing the user age here;
+// const ageSchema = z.number().min(18).max(100).int(); 
+// const parseAgeSchema = ageSchema.parse(userAge);
+// console.log(parseAgeSchema);
+// // // // // Here, we are getting the Ouput on Terminal as :- error;
 // // // // As the we have given the userAge is 17. It is showing the error;
 /**
  * 
@@ -92,3 +92,31 @@ console.log(parseAgeSchema);
 
 
 // // // ---------------------------------------------------------------------------------------------
+
+
+// // // Use of try and catch block;
+
+const userAge = 17; // // Providing the user age here;
+// const userAge = 20; // // Providing the user age here;
+const ageSchema = z.number().min(18).max(100).int(); 
+// const parseAgeSchema = ageSchema.parse(userAge);
+// console.log(parseAgeSchema);
+try {
+    const parseAgeSchema = ageSchema.parse(userAge);
+    console.log(parseAgeSchema); // // Success case;
+} catch (error) {
+    // // instanceof is a JavaScript operator used to check if an object is an instance of a specific class or constructor.
+    if(error instanceof ZodError)
+    {
+        console.log(error.issues[0].message); 
+        // // Display error message only;
+        // // Instead of ZodError:
+    }
+    else
+    {
+        console.log("Unexpected error :", error);
+    }
+}
+// // // // Here, we are getting the Ouput on Terminal as :- Number must be greater than or equal to 18;
+// // // // (Number must be greater than or equal to 18) this is getting because of this => const userAge = 17;
+// // // // If we change this => const userAge = 20 then it's output is :- 20;
