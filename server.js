@@ -27,8 +27,8 @@ server.get("/contact", (request, response) => {
     </div>`);
 });
 
-
-const PORT = 3001;
+// // // Use of Environment Variable;
+const PORT = process.env.PORT || 3001; // // Default PORT is 3001 if something went wrong;
 
 server.listen(PORT, () => {
     console.log(`Server Running at ${PORT}`);
@@ -37,9 +37,10 @@ server.listen(PORT, () => {
 
 // // // Firstly, Open the Powershell Terminal and clear all the stuff;
 // // // Secondly, ls and check the folder and file you want to operate;
-// // // Thirdly, write down the command i.e., (node --watch server.js) 
-// // // And, you will get the Output as Server Running at 3001
-// // // Finally, your server started :- Server running at 3001;
-// // // Now, open the browser and in url write localhost:3001
+// // // Now, no need of writting down the command i.e., (node --watch server.js) 
+// // // Instead of (node --watch server.js) use npm run shiva
+// // // And, you will get the Output as Server Running at 9001
+// // // Finally, your server started :- Server running at 9001;
+// // // Now, open the browser and in url write localhost:9001
 // // // You will get the result on the display as :- Welcome to the Home Page.
-// // // As well as you can switch the pages as localhost:3001/about or localhost:3001/contact;
+// // // As well as you can switch the pages as localhost:9001/about or localhost:9001/contact;
