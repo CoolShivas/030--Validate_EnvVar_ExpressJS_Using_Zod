@@ -1,4 +1,4 @@
-export const PORT = isNaN(process.env.PORT) ? 3001 : parseInt(process.env.PORT);
+// export const PORT = isNaN(process.env.PORT) ? 3001 : parseInt(process.env.PORT);
 /**
  * 
  Starting the validation whether it is a number or not. In case if it is not a number then set the Default PORT i.e., (3001) or if it is in any other form (such as, string or number or boolean) then check it by using parseInt();
@@ -129,8 +129,37 @@ import { z, ZodError } from "zod";
 
 
 
-const userAge = 20; // // Providing the user age here;
-const ageSchema = z.number().min(18).max(100).int(); 
-const {data, error, success} = ageSchema.safeParse(userAge); // // safeParse give power to access all this;
-console.log(data, error, success);
-// // // // // Here, we are getting the Ouput on Terminal as :- 20 undefined true
+// const userAge = 20; // // Providing the user age here;
+// const ageSchema = z.number().min(18).max(100).int(); 
+// const {data, error, success} = ageSchema.safeParse(userAge); // // safeParse give power to access all this;
+// console.log(data, error, success);
+// // // // // // Here, we are getting the Ouput on Terminal as :- 20 undefined true
+
+
+
+
+
+// // // // ---------------------------------------------------------------------------------------------
+
+
+/**
+ * 
+ * * * .env file that is ignore or hidden :-
+ * 
+Making the PORT number to string and with the help of Zod. We will validate and convert it to number.
+PORT = "9001"
+ * 
+ */
+
+
+
+const portSchema = z.coerce.number().min(1).max(65535).default(1729);
+// // // // If the developer bymistake given the PORT string instead of number;
+// // // // Then, with the help of Zod. We will validate and convert it to number and also check the minimun, maximun and default number too such as mention (z.coerce.number().min(1).max(65535).default(1729));
+
+
+export const PORT = portSchema.parse(process.env.PORT);
+// // // // // // Here, we are getting the Ouput on Terminal as :- 
+// // // // // Firstly, clear the terminal;
+// // // // // Secondly, run the command npm run shiva
+// // // // // Thirdly, we are getting the Ouput on Terminal as :- Server Running at 9001
